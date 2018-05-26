@@ -11,18 +11,17 @@
 /* eslint-env node */
 
 module.exports = {
-  staticFileGlobs: [
-    'manifest.json',
-    'src/**/*',
-  ],
-  runtimeCaching: [
+    staticFileGlobs: [
+        'manifest.json',
+        'src/**/*',
+    ],
+    runtimeCaching: [
     {
-      urlPattern: /\/@webcomponents\/webcomponentsjs\//,
-      handler: 'fastest'
+        urlPattern: /\/@webcomponents\/webcomponentsjs\//,
+        handler: 'fastest'
     },
     {
-      urlPattern: /^https:\/\/fonts.gstatic.com\//,
-      handler: 'fastest'
-    }
-  ]
+        urlPattern: /^https:\/\/fonts.gstatic.com\//,
+        handler: 'fastest'
+    }]
 };

@@ -8,8 +8,14 @@ Code distributed by Google as part of the polymer project is also
 subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
 */
 
-import { GET_PRODUCTS, ADD_TO_CART, REMOVE_FROM_CART, CHECKOUT_SUCCESS, CHECKOUT_FAILURE } from '../actions/shop.js';
-import { createSelector } from 'reselect';
+import {
+  GET_PRODUCTS,
+  ADD_TO_CART,
+  REMOVE_FROM_CART,
+  CHECKOUT_SUCCESS,
+  CHECKOUT_FAILURE
+} from "../actions/shop.js";
+import { createSelector } from "reselect";
 
 const INITIAL_CART = {
   addedIds: [],
@@ -17,11 +23,19 @@ const INITIAL_CART = {
 };
 
 const UPDATED_CART = {
-  addedIds: ['1'],
-  quantityById: {'1': 1}
+  addedIds: ["1"],
+  quantityById: {
+    "1": 1
+  }
 };
 
-const shop = (state = {products: {}, cart: INITIAL_CART}, action) => {
+const shop = (
+  state = {
+    products: {},
+    cart: INITIAL_CART
+  },
+  action
+) => {
   switch (action.type) {
     case GET_PRODUCTS:
       return {
@@ -35,32 +49,33 @@ const shop = (state = {products: {}, cart: INITIAL_CART}, action) => {
         ...state,
         products: products(state.products, action),
         cart: cart(state.cart, action),
-        error: ''
+        error: ""
       };
     case CHECKOUT_FAILURE:
       return {
         ...state,
-        error: 'Checkout failed. Please try again'
+        error: "Checkout failed. Please try again"
       };
     default:
       return state;
   }
-}
+};
 
 // Slice reducer: it only reduces the bit of the state it's concerned about.
 const products = (state, action) => {
   switch (action.type) {
     case ADD_TO_CART:
-    case REMOVE_FROM_CART:
+    case REMOVE_FROM_CART: {
       const productId = action.productId;
       return {
         ...state,
         [productId]: product(state[productId], action)
       };
+    }
     default:
       return state;
   }
-}
+};
 
 const product = (state, action) => {
   switch (action.type) {
@@ -77,7 +92,7 @@ const product = (state, action) => {
     default:
       return state;
   }
-}
+};
 
 const cart = (state = INITIAL_CART, action) => {
   switch (action.type) {
@@ -92,7 +107,7 @@ const cart = (state = INITIAL_CART, action) => {
     default:
       return state;
   }
-}
+};
 
 const addedIds = (state = INITIAL_CART.addedIds, quantityById, action) => {
   const productId = action.productId;
@@ -101,10 +116,7 @@ const addedIds = (state = INITIAL_CART.addedIds, quantityById, action) => {
       if (state.indexOf(productId) !== -1) {
         return state;
       }
-      return [
-        ...state,
-        action.productId
-      ];
+      return [...state, action.productId];
     case REMOVE_FROM_CART:
       // This is called before the state is updated, so if you have 1 item in the
       // cart during the remove action, you'll have 0.
@@ -116,7 +128,7 @@ const addedIds = (state = INITIAL_CART.addedIds, quantityById, action) => {
     default:
       return state;
   }
-}
+};
 
 const quantityById = (state = INITIAL_CART.quantityById, action) => {
   const productId = action.productId;
@@ -134,7 +146,7 @@ const quantityById = (state = INITIAL_CART.quantityById, action) => {
     default:
       return state;
   }
-}
+};
 
 export default shop;
 
@@ -160,7 +172,12 @@ export const cartItemsSelector = createSelector(
     const items = [];
     for (let id of cart.addedIds) {
       const item = products[id];
-      items.push({id: item.id, title: item.title, amount: cart.quantityById[id], price: item.price});
+      items.push({
+        id: item.id,
+        title: item.title,
+        amount: cart.quantityById[id],
+        price: item.price
+      });
     }
     return items;
   }
@@ -181,13 +198,10 @@ export const cartTotalSelector = createSelector(
 );
 
 // Return the number of items in the cart
-export const cartQuantitySelector = createSelector(
-  cartSelector,
-  cart => {
-    let num = 0;
-    for (let id of cart.addedIds) {
-      num += cart.quantityById[id];
-    }
-    return num;  
+export const cartQuantitySelector = createSelector(cartSelector, cart => {
+  let num = 0;
+  for (let id of cart.addedIds) {
+    num += cart.quantityById[id];
   }
-)
+  return num;
+});

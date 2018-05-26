@@ -8,19 +8,19 @@ Code distributed by Google as part of the polymer project is also
 subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
 */
 
-import { html } from '@polymer/lit-element';
+import { html } from "@polymer/lit-element";
 
 export const ButtonSharedStyles = html`
 <style>
-  button {
-    font-size: inherit;
-    vertical-align: middle;
-    background: transparent;
-    border: none;
-    cursor: pointer;
-  }
-  button:hover svg {
-    fill: var(--app-primary-color);
-  }
+    button {
+        font-size: inherit;
+        vertical-align: middle;
+        background: transparent;
+        border: none;
+        cursor: pointer;
+    }
+        button:hover svg {
+        fill: var(--app-primary-color);
+    }
 </style>
 `;

@@ -8,7 +8,7 @@ Code distributed by Google as part of the polymer project is also
 subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
 */
 
-import { LitElement, html } from '@polymer/lit-element';
+import { LitElement, html } from "@polymer/lit-element";
 
 // This element is *not* connected to the redux store.
 class ShopItem extends LitElement {
@@ -26,8 +26,8 @@ class ShopItem extends LitElement {
       name: String,
       amount: String,
       price: String
-    }
+    };
   }
 }
 
-window.customElements.define('shop-item', ShopItem);
+window.customElements.define("shop-item", ShopItem);

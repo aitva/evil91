@@ -1,11 +1,11 @@
 {
-  "name": "pwa-starter-kit",
-  "version": "0.8.0",
+  "name": "evil91",
+  "version": "0.1.0",
   "contributors": [
-    "The Polymer Authors"
+    "Louis AROD"
   ],
-  "license": "BSD-3-Clause",
-  "repository": "Polymer/pwa-starter-kit",
+  "license": "MIT",
+  "repository": "aitva/evil91",
   "scripts": {
     "start": "polymer serve",
     "build": "npm run build:prpl-server && npm run build:static",
