@@ -213,7 +213,8 @@ class MyApp extends connect(store)(LitElement) {
     </footer>
 
     <snack-bar active?="${_snackbarOpened}">
-        You are now ${_offline ? "offline" : "online"}.</snack-bar>
+        You are now ${_offline ? "offline" : "online"}.
+    </snack-bar>
     `;
   }
 
@@ -230,7 +231,7 @@ class MyApp extends connect(store)(LitElement) {
   constructor() {
     super();
     // To force all event listeners for gestures to be passive.
-    // See https://www.polymer-project.org/2.0/docs/devguide/gesture-events#use-passive-gesture-listeners
+    // See https://www.polymer-project.org/2.0/docs/devguide/gesture-events
     setPassiveTouchGestures(true);
   }
 

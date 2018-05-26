@@ -64,7 +64,7 @@ export const getAllProducts = () => (dispatch /*getState*/) => {
   });
 };
 
-export const checkout = (/*productId*/) => dispatch => {
+export const checkout = productId => dispatch => {
   // Here you could do things like credit card validation, etc.
   // If that fails, dispatch CHECKOUT_FAILURE. We're simulating that
   // by flipping a coin :)

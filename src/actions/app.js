@@ -86,7 +86,7 @@ export const updateOffline = offline => (dispatch, getState) => {
   });
 };
 
-export const updateLayout = (/*wide*/) => (dispatch, getState) => {
+export const updateLayout = wide => (dispatch, getState) => {
   if (getState().app.drawerOpened) {
     dispatch(updateDrawerState(false));
   }
