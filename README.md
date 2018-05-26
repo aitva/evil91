@@ -1,2 +1,3 @@
-# evil91
-A game using PWA and web component.
+# Evil 91
+This is an attempt to make an online game
+using PWA and Web Component.
