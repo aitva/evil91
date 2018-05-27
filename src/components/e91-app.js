@@ -4,7 +4,7 @@ import { installRouter } from "pwa-helpers/router.js";
 import { store } from "../store.js";
 import { navigate } from "../actions/app.js";
 
-class EvilApp extends connect(store)(LitElement) {
+class App extends connect(store)(LitElement) {
   _render({ appTitle, _page }) {
     return html`
     <style>
@@ -12,8 +12,12 @@ class EvilApp extends connect(store)(LitElement) {
       display: block;
     }
     </style>
+    <header>
+      <h1>${appTitle}</h1>
+    </header>
     <main class="main-content">
-      Huh. Is it a web app already?
+      <e91-office class="page" active?="${_page === "e91-office"}"></e91-office>
+      <e91-404 class="page" active?="${_page === "e91-404"}"></e91-404>
     </main>
     `;
   }
@@ -36,4 +40,4 @@ class EvilApp extends connect(store)(LitElement) {
   }
 }
 
-window.customElements.define("evil-app", EvilApp);
+window.customElements.define("e91-app", App);
